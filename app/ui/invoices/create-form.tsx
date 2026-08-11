@@ -1,16 +1,17 @@
+import { createInvoice } from '@/app/lib/actions';
 import { CustomerField } from '@/app/lib/definitions';
-import Link from 'next/link';
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
+import {
+	CheckIcon,
+	ClockIcon,
+	CurrencyDollarIcon,
+	UserCircleIcon,
+} from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
-    <form>
+    <form action={createInvoice}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -71,6 +72,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   type="radio"
                   value="pending"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+				  required={true}
                 />
                 <label
                   htmlFor="pending"
@@ -86,6 +88,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   type="radio"
                   value="paid"
                   className="h-4 w-4 cursor-pointer border-gray-300 bg-gray-100 text-gray-600 focus:ring-2"
+				  required={true}
                 />
                 <label
                   htmlFor="paid"
